@@ -1,4 +1,4 @@
-package com.example.a12172.callback;
+package com.example.yarbil.net;
 
 public interface IMainListenter<T> {
     public void onScuess(T t);

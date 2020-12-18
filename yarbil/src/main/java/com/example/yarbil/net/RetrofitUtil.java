@@ -1,4 +1,4 @@
-package com.example.a12172.net;
+package com.example.yarbil.net;
 
 import com.google.gson.Gson;
 

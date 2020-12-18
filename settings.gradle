@@ -1,2 +1,3 @@
+include ':yarbil'
 include ':app'
 rootProject.name = "12172"

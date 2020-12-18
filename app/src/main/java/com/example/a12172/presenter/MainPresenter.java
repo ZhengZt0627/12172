@@ -2,9 +2,10 @@ package com.example.a12172.presenter;
 
 import com.example.a12172.base.BasePresenter;
 import com.example.a12172.bean.MainBean;
-import com.example.a12172.callback.IMainListenter;
 import com.example.a12172.constract.MainContract;
 import com.example.a12172.model.MainModel;
+import com.example.a12172.net.IMainListenter;
+
 
 public class MainPresenter extends BasePresenter<MainContract.MainView,MainContract.MainModel> implements MainContract.MainPresenter {
 
