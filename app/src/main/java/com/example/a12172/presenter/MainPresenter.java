@@ -6,16 +6,11 @@ import com.example.a12172.callback.IMainListenter;
 import com.example.a12172.constract.MainContract;
 import com.example.a12172.model.MainModel;
 
-public class MainPresenter extends BasePresenter<MainContract.MainView> implements MainContract.MainPresenter {
-    private MainContract.MainModel mainModel;
-
-    public MainPresenter() {
-        this.mainModel = new MainModel();
-    }
+public class MainPresenter extends BasePresenter<MainContract.MainView,MainContract.MainModel> implements MainContract.MainPresenter {
 
     @Override
     public void getdata() {
-        mainModel.MainModel("%E7%A6%8F%E5%88%A9/20/19", new IMainListenter<MainBean>() {
+        iModel.MainModel("%E7%A6%8F%E5%88%A9/20/19", new IMainListenter<MainBean>() {
             @Override
             public void onScuess(MainBean mainBean) {
                iview.onScuess(mainBean);
@@ -27,5 +22,10 @@ public class MainPresenter extends BasePresenter<MainContract.MainView> implemen
             }
         });
 
+    }
+
+    @Override
+    protected MainContract.MainModel getModel() {
+        return new MainModel(this);
     }
 }

@@ -1,5 +1,6 @@
 package com.example.a12172.constract;
 
+import com.example.a12172.base.BaseModel;
 import com.example.a12172.base.BaseView;
 import com.example.a12172.bean.MainBean;
 import com.example.a12172.callback.IMainListenter;
@@ -9,10 +10,10 @@ public class MainContract {
         void onScuess(MainBean mainBean);
         void onFeil(String str);
     }
-    public interface MainModel{
-        <T> void MainModel(String url, IMainListenter<T> callBack);
+    public abstract static class  MainModel implements BaseModel {
+        public abstract <T> void MainModel(String url,IMainListenter<T> callBack);
     }
-    public interface MainPresenter extends BaseView{
+    public interface MainPresenter{
         void getdata();
     }
 }
