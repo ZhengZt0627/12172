@@ -5,6 +5,9 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.lang.reflect.ParameterizedType;
+import java.lang.reflect.Type;
+
 public abstract class BaseActivity<V extends BasePresenter> extends AppCompatActivity implements BaseView{
     public V presenter;
     @Override
@@ -27,4 +30,19 @@ public abstract class BaseActivity<V extends BasePresenter> extends AppCompatAct
 
     protected abstract int getLayoutId();
 
+    public void createPresenter(){
+        Type genericInterfaces = this.getClass().getGenericSuperclass();
+        Type[] actualTypeArguments = ((ParameterizedType) genericInterfaces).getActualTypeArguments();
+                Type p=actualTypeArguments[0];
+        try {
+            presenter= (V)p.getClass().newInstance();
+
+            presenter.attachView(this);
+
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        } catch (InstantiationException e) {
+            e.printStackTrace();
+        }
+    }
 }
